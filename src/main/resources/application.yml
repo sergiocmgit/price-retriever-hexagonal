@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: name
+    url: jdbc:h2:file:./data/price-retriever-db
+    password:
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      mode: always
