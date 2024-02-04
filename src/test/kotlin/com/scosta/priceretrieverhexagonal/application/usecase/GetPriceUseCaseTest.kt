@@ -1,15 +1,14 @@
 package com.scosta.priceretrieverhexagonal.application.usecase
 
-import com.scosta.priceretrieverhexagonal.application.domain.BrandId
-import com.scosta.priceretrieverhexagonal.application.domain.ProductId
-import com.scosta.priceretrieverhexagonal.application.port.input.GetPriceInput
+import com.scosta.priceretrieverhexagonal.application.domain.Price
 import com.scosta.priceretrieverhexagonal.application.port.output.PriceRepository
-import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_BRAND_ID
-import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_PRODUCT_ID
+import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_APPLIED_AT
+import com.scosta.priceretrieverhexagonal.fixtures.buildGetPriceInput
 import com.scosta.priceretrieverhexagonal.fixtures.buildPrice
 import io.mockk.every
 import io.mockk.mockk
-import java.time.OffsetDateTime
+import kotlin.Result.Companion.failure
+import kotlin.Result.Companion.success
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -18,15 +17,25 @@ class GetPriceUseCaseTest {
     private val priceRepository = mockk<PriceRepository>()
     private val useCase = GetPriceUseCase(priceRepository)
 
+    private val input = buildGetPriceInput()
+    private val price = buildPrice()
+
     @Test
     fun `should get a price`() {
         // Given
-        val productId = ProductId(DEFAULT_PRODUCT_ID)
-        val brandId = BrandId(DEFAULT_BRAND_ID)
-        val appliedAt = OffsetDateTime.now()
-        val input = GetPriceInput(productId.value, brandId.value, appliedAt)
-        val expected = Result.success(buildPrice())
-        every { priceRepository.find(productId, brandId, appliedAt) } returns expected
+        val expected = success(buildPrice())
+        every { priceRepository.find(price.productId, price.brandId, DEFAULT_APPLIED_AT) } returns expected
+        // When
+        val result = useCase(input)
+        // Then
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun `should return failure when the price cannot be found`() {
+        // Given
+        val expected = failure<Price>(Throwable("boom"))
+        every { priceRepository.find(price.productId, price.brandId, DEFAULT_APPLIED_AT) } returns expected
         // When
         val result = useCase(input)
         // Then
