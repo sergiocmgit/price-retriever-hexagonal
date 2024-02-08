@@ -36,6 +36,7 @@ class PriceController(
             brandId = brandId.value,
             amount = amount.value,
             currency = amount.currency.displayName,
+            priceList = priceList.value,
             startAt = startAt.value,
             endAt = endAt.value,
         )
@@ -46,6 +47,7 @@ data class GetPriceResponse(
     val brandId: Long,
     val amount: BigDecimal,
     val currency: String,
+    val priceList: String,
     val startAt: OffsetDateTime,
     val endAt: OffsetDateTime,
 )
