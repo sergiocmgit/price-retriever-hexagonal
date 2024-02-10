@@ -35,7 +35,7 @@ class PriceController(
             productId = productId.value,
             brandId = brandId.value,
             amount = amount.value,
-            currency = amount.currency.displayName,
+            currency = amount.currency.currencyCode,
             priceList = priceList.value,
             startAt = startAt.value,
             endAt = endAt.value,
