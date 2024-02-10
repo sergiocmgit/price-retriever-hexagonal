@@ -24,10 +24,23 @@ For this practice, the next instructions are given:
 
 ----
 
-#### PRICES
-| BRAND_ID | START_DATE          | END_DATE            | PRICE_LIST | PRODUCT_ID | PRIORITY | PRICE | CURR |
+#### Database schema
+
+Table: price
+
+| brand_id | start_date          | end_date            | price_list | product_id | priority | price | curr |
 |----------|---------------------|---------------------|------------|------------|----------|-------|------|
 | 1        | 2020-06-14-00.00.00 | 2020-12-31-23.59.59 | 1          | 35455      | 0        | 35.50 | EUR  |
 | 1        | 2020-06-14-15.00.00 | 2020-06-14-18.30.00 | 2          | 35455      | 1        | 25.45 | EUR  | 
 | 1        | 2020-06-15-00.00.00 | 2020-06-15-11.00.00 | 3          | 35455      | 1        | 30.50 | EUR  | 
 | 1        | 2020-06-15-16.00.00 | 2020-12-31-23.59.59 | 4          | 35455      | 1        | 38.95 | EUR  | 
+
+- brand_id: foreign key of the brand.
+- start_date , end_date: timeframe in which the price is applied.
+- price_list: identifier of the group of prices to be applied.
+- product_id: identifier of the product.
+- priority: in case of ambiguity between prices, this field is used to decide the price. 
+If two prices clash for the same date, the one with higher priority (higher value) is applied.
+- price: final price.
+- curr: ISO of the currency.
+ 
