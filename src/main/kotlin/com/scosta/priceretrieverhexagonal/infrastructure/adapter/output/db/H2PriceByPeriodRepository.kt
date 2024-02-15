@@ -18,7 +18,7 @@ import java.util.Currency
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.queryForObject
 
-
+// TODO: add tests
 class H2PriceRepository(
     private val jdbcTemplate: JdbcTemplate
 ) : PriceRepository {
@@ -29,7 +29,7 @@ class H2PriceRepository(
                 price_list, priority, amount, currency
                 FROM price
                 WHERE product_id=? and brand_id=? and ? between start_at and end_at
-                ORDER by priority
+                ORDER by priority desc
                 LIMIT 1
             """,
                 productId.value,
