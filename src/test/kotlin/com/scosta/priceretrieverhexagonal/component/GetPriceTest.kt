@@ -3,18 +3,9 @@ package com.scosta.priceretrieverhexagonal.component
 import com.scosta.priceretrieverhexagonal.utils.andContentAsDefinedInFile
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 
-@SpringBootTest(webEnvironment = RANDOM_PORT)
-@AutoConfigureMockMvc
-class GetPriceTest(
-    @Autowired private val mockMvc: MockMvc
-) {
+class GetPriceTest : ComponentTest() {
 
     @TestFactory
     fun `should get prices`() = listOf(
