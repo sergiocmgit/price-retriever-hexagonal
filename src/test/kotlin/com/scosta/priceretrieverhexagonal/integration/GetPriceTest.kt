@@ -1,6 +1,6 @@
 package com.scosta.priceretrieverhexagonal.integration
 
-import java.io.File
+import com.scosta.priceretrieverhexagonal.utils.andContentAsDefinedInFile
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -36,13 +36,8 @@ class GetPriceTest(
             )
 
             result.andExpect {
-                content {
-                    json(responseFile.toJson())
-                }
+                andContentAsDefinedInFile(responseFile)
             }
         }
     }
-
-    private fun String.toJson(): String =
-        File("src/test/resources/integration-responses/$this").readText()
 }
