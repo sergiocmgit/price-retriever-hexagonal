@@ -26,19 +26,18 @@ const val DEFAULT_PRICE_LIST = "some-price-list"
 const val DEFAULT_PRIORITY = 1
 val DEFAULT_AMOUNT: BigDecimal = ONE.setScale(2)
 
-fun buildPrice() = Price(
-    id = Id(DEFAULT_PRICE_ID),
+fun buildPrice(
+    id: Long = DEFAULT_PRICE_ID,
+    priority: Int = DEFAULT_PRIORITY
+) = Price(
+    id = Id(id),
     productId = ProductId(DEFAULT_PRODUCT_ID),
     brandId = BrandId(DEFAULT_BRAND_ID),
     startAt = StartAt(DEFAULT_START_AT),
     endAt = EndAt(DEFAULT_END_AT),
     priceList = PriceList(DEFAULT_PRICE_LIST),
-    priority = Priority(DEFAULT_PRIORITY),
+    priority = Priority(priority),
     amount = Amount(DEFAULT_AMOUNT, Currency.getInstance("EUR")),
 )
 
-fun buildGetPriceInput() = GetPriceInput(
-    DEFAULT_PRODUCT_ID,
-    DEFAULT_BRAND_ID,
-    DEFAULT_APPLIED_AT
-)
+fun buildGetPriceInput() = GetPriceInput(DEFAULT_PRODUCT_ID, DEFAULT_BRAND_ID, DEFAULT_APPLIED_AT)
