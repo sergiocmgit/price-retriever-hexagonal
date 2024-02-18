@@ -17,9 +17,11 @@ import kotlin.random.Random
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DynamicTest.dynamicTest
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
+@Tag("integration")
 class H2PriceRepositoryTest {
 
     private val repository = H2PriceRepository(jdbcTemplate)

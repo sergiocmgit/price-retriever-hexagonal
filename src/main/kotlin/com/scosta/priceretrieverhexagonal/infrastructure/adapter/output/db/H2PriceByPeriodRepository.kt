@@ -18,7 +18,6 @@ import java.util.Currency
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.queryForObject
 
-// TODO: add tests
 class H2PriceRepository(
     private val jdbcTemplate: JdbcTemplate
 ) : PriceRepository {
