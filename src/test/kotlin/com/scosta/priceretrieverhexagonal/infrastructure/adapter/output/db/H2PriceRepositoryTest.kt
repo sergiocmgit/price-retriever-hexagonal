@@ -9,13 +9,17 @@ import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_START_AT
 import com.scosta.priceretrieverhexagonal.fixtures.buildPrice
 import kotlin.Result.Companion.success
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest
 import org.springframework.jdbc.core.JdbcTemplate
 
 // TODO: improve test, create some DatabaseUtils
 @JdbcTest
+@TestInstance(PER_CLASS)
 class H2PriceRepositoryTest(
     @Autowired private val jdbcTemplate: JdbcTemplate
 ) {
@@ -27,10 +31,15 @@ class H2PriceRepositoryTest(
     private val appliedAt = DEFAULT_START_AT.plusSeconds(5)
     private val price = buildPrice()
 
+    @BeforeAll
+    fun insertPrice() {
+        // TODO: add truncate function
+        save(price)
+    }
+
+
     @Test
     fun `should find the price`() {
-        // Given
-        save(price)
         // When
         val result = repository.find(productId, brandId, appliedAt)
         // Then
