@@ -25,16 +25,17 @@ class GetPriceTest(
         "2020-06-16T21:00:00Z" to "get_price_16th_at_21.json",
     ).map { (appliedAt, responseFile) ->
         dynamicTest(appliedAt) {
+            // Given
             val productId = 35455
             val brandId = 1
-
+            // When
             val result = mockMvc.get(
                 "/api/prices?productId={productId}&brandId={brandId}&appliedAt={appliedAt}",
                 productId,
                 brandId,
                 appliedAt
             )
-
+            // Then
             result.andExpect {
                 andContentAsDefinedInFile(responseFile)
             }

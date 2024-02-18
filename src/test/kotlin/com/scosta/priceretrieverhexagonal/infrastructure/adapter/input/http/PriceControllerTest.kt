@@ -26,27 +26,31 @@ class PriceControllerTest {
 
     @Test
     fun `should get a price`() {
+        // Given
         every { getPrice(input) } returns success(price)
-
-        mockMvc.get(
+        // When
+        val result = mockMvc.get(
             "/api/prices?productId={productId}&brandId={brandId}&appliedAt={appliedAt}",
             input.productId,
             input.brandId,
             input.appliedAt
-        ).andExpect { status().isOk }.andExpect {
-            content {
-                json(
-                    """{
-                    "productId": "some-product-id",
-                    "brandId": 123,
-                    "amount": 1,
-                    "currency": "EUR",
-                    "priceList": "some-price-list",
-                    "startAt": "2024-02-10T12:08:48+01:00",
-                    "endAt": "2024-02-10T13:08:48+01:00"
-                }""".trimIndent()
-                )
+        )
+        // Then
+        result.andExpect { status().isOk }
+            .andExpect {
+                content {
+                    json(
+                        """{
+                            "productId": "some-product-id",
+                            "brandId": 123,
+                            "amount": 1,
+                            "currency": "EUR",
+                            "priceList": "some-price-list",
+                            "startAt": "2024-02-10T12:08:48+01:00",
+                            "endAt": "2024-02-10T13:08:48+01:00"
+                        }""".trimIndent()
+                    )
+                }
             }
-        }
     }
 }
