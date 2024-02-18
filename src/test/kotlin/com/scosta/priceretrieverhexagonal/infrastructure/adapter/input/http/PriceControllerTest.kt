@@ -42,8 +42,8 @@ class PriceControllerTest {
                     "amount": 1,
                     "currency": "EUR",
                     "priceList": "some-price-list",
-                    "startAt": "2024-02-10T11:08:48+01:00",
-                    "endAt": "2024-02-10T12:08:48+01:00"
+                    "startAt": "2024-02-10T12:08:48+01:00",
+                    "endAt": "2024-02-10T13:08:48+01:00"
                 }""".trimIndent()
                 )
             }
