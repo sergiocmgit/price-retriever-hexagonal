@@ -1,4 +1,4 @@
-package com.scosta.priceretrieverhexagonal.integration
+package com.scosta.priceretrieverhexagonal.component
 
 import com.scosta.priceretrieverhexagonal.utils.andContentAsDefinedInFile
 import org.junit.jupiter.api.DynamicTest.dynamicTest
