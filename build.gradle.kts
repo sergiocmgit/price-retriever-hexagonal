@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.scosta"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17
@@ -19,11 +19,12 @@ repositories {
 }
 
 dependencies {
-	implementation("com.h2database:h2:2.2.224")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	runtimeOnly("com.h2database:h2:2.2.224")
 
 	testImplementation("com.ninja-squad:springmockk:4.0.2")
 	testImplementation("io.mockk:mockk:1.13.9")
