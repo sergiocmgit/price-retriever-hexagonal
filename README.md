@@ -7,7 +7,6 @@ The topic turns around prices linked to timeframes and the query of them.
 ## Prerequisites
 
 - Java 17
-- Gradle 8.5
 - Docker
 
 ## Installation
@@ -18,7 +17,7 @@ The topic turns around prices linked to timeframes and the query of them.
    ```
 2. Build the image
    ```sh
-   gradle build
+   ./gradlew build
    ```
 3. Build the docker image
    ```sh
