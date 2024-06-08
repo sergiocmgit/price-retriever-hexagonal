@@ -1,9 +1,9 @@
 package com.scosta.priceretrieverhexagonal.infrastructure.adapter.output.db
 
+import com.scosta.priceretrieverhexagonal.application.domain.exception.PriceNotFound
 import com.scosta.priceretrieverhexagonal.application.domain.model.BrandId
 import com.scosta.priceretrieverhexagonal.application.domain.model.Price
 import com.scosta.priceretrieverhexagonal.application.domain.model.ProductId
-import com.scosta.priceretrieverhexagonal.application.domain.exception.PriceNotFound
 import com.scosta.priceretrieverhexagonal.config.DatabaseInstance.jdbcTemplate
 import com.scosta.priceretrieverhexagonal.config.DatabaseInstance.truncateAll
 import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_BRAND_ID
@@ -22,9 +22,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
 @Tag("integration")
-class H2PriceRepositoryTest {
+class H2FindPriceByProductIdAndBrandIdAtDateTest {
 
-    private val repository = H2PriceRepository(jdbcTemplate)
+    private val h2FindPriceByProductIdAndBrandIdAtDate = H2FindPriceByProductIdAndBrandIdAtDate(jdbcTemplate)
 
     private val productId = ProductId(DEFAULT_PRODUCT_ID)
     private val brandId = BrandId(DEFAULT_BRAND_ID)
@@ -41,7 +41,7 @@ class H2PriceRepositoryTest {
     @Test
     fun `should find the price`() {
         // When
-        val result = repository.find(productId, brandId, appliedAt)
+        val result = h2FindPriceByProductIdAndBrandIdAtDate(productId, brandId, appliedAt)
         // Then
         assertThat(result).isEqualTo(success(price))
     }
@@ -55,7 +55,7 @@ class H2PriceRepositoryTest {
             priority = price.priority.value + 1
         ).also(::save)
         // When
-        val result = repository.find(productId, brandId, appliedAt)
+        val result = h2FindPriceByProductIdAndBrandIdAtDate(productId, brandId, appliedAt)
         // Then
         assertThat(result).isEqualTo(success(priceWithHigherPriority))
     }
@@ -68,7 +68,8 @@ class H2PriceRepositoryTest {
     ).map { (title, input) ->
         dynamicTest(title) {
             // When
-            val result = repository.find(ProductId(input.first), BrandId(input.second), input.third)
+            val result =
+                h2FindPriceByProductIdAndBrandIdAtDate(ProductId(input.first), BrandId(input.second), input.third)
             // Then
             assertThat(result).isEqualTo(failure<Price>(PriceNotFound))
         }

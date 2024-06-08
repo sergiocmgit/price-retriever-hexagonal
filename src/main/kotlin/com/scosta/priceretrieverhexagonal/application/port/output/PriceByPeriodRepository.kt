@@ -5,6 +5,6 @@ import com.scosta.priceretrieverhexagonal.application.domain.model.Price
 import com.scosta.priceretrieverhexagonal.application.domain.model.ProductId
 import java.time.OffsetDateTime
 
-interface PriceRepository {
-    fun find(productId: ProductId, brandId: BrandId, appliedAt: OffsetDateTime): Result<Price>
+interface FindPriceByProductIdAndBrandIdAtDate {
+    operator fun invoke(productId: ProductId, brandId: BrandId, appliedAt: OffsetDateTime): Result<Price>
 }

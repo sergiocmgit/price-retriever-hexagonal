@@ -1,7 +1,7 @@
 package com.scosta.priceretrieverhexagonal.application.usecase
 
 import com.scosta.priceretrieverhexagonal.application.domain.model.Price
-import com.scosta.priceretrieverhexagonal.application.port.output.PriceRepository
+import com.scosta.priceretrieverhexagonal.application.port.output.FindPriceByProductIdAndBrandIdAtDate
 import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_APPLIED_AT
 import com.scosta.priceretrieverhexagonal.fixtures.buildGetPriceInput
 import com.scosta.priceretrieverhexagonal.fixtures.buildPrice
@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test
 
 class GetPriceUseCaseTest {
 
-    private val priceRepository = mockk<PriceRepository>()
-    private val useCase = GetPriceUseCase(priceRepository)
+    private val findPriceByProductIdAndBrandIdAtDate = mockk<FindPriceByProductIdAndBrandIdAtDate>()
+    private val useCase = GetPriceUseCase(findPriceByProductIdAndBrandIdAtDate)
 
     private val input = buildGetPriceInput()
     private val price = buildPrice()
@@ -24,7 +24,13 @@ class GetPriceUseCaseTest {
     fun `should get a price`() {
         // Given
         val expected = success(buildPrice())
-        every { priceRepository.find(price.productId, price.brandId, DEFAULT_APPLIED_AT) } returns expected
+        every {
+            findPriceByProductIdAndBrandIdAtDate(
+                price.productId,
+                price.brandId,
+                DEFAULT_APPLIED_AT
+            )
+        } returns expected
         // When
         val result = useCase(input)
         // Then
@@ -35,7 +41,13 @@ class GetPriceUseCaseTest {
     fun `should return failure when the price cannot be found`() {
         // Given
         val expected = failure<Price>(Throwable("boom"))
-        every { priceRepository.find(price.productId, price.brandId, DEFAULT_APPLIED_AT) } returns expected
+        every {
+            findPriceByProductIdAndBrandIdAtDate(
+                price.productId,
+                price.brandId,
+                DEFAULT_APPLIED_AT
+            )
+        } returns expected
         // When
         val result = useCase(input)
         // Then

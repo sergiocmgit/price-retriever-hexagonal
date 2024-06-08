@@ -1,5 +1,6 @@
 package com.scosta.priceretrieverhexagonal.infrastructure.adapter.output.db
 
+import com.scosta.priceretrieverhexagonal.application.domain.exception.PriceNotFound
 import com.scosta.priceretrieverhexagonal.application.domain.model.Amount
 import com.scosta.priceretrieverhexagonal.application.domain.model.BrandId
 import com.scosta.priceretrieverhexagonal.application.domain.model.Price
@@ -9,8 +10,7 @@ import com.scosta.priceretrieverhexagonal.application.domain.model.Price.PriceLi
 import com.scosta.priceretrieverhexagonal.application.domain.model.Price.Priority
 import com.scosta.priceretrieverhexagonal.application.domain.model.Price.StartAt
 import com.scosta.priceretrieverhexagonal.application.domain.model.ProductId
-import com.scosta.priceretrieverhexagonal.application.domain.exception.PriceNotFound
-import com.scosta.priceretrieverhexagonal.application.port.output.PriceRepository
+import com.scosta.priceretrieverhexagonal.application.port.output.FindPriceByProductIdAndBrandIdAtDate
 import java.sql.ResultSet
 import java.time.OffsetDateTime
 import java.time.ZoneOffset.UTC
@@ -18,10 +18,10 @@ import java.util.Currency
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.queryForObject
 
-class H2PriceRepository(
+class H2FindPriceByProductIdAndBrandIdAtDate(
     private val jdbcTemplate: JdbcTemplate
-) : PriceRepository {
-    override fun find(productId: ProductId, brandId: BrandId, appliedAt: OffsetDateTime): Result<Price> =
+) : FindPriceByProductIdAndBrandIdAtDate {
+    override operator fun invoke(productId: ProductId, brandId: BrandId, appliedAt: OffsetDateTime): Result<Price> =
         try {
             jdbcTemplate.queryForObject(
                 """SELECT id, product_id, brand_id, start_at, end_at,
