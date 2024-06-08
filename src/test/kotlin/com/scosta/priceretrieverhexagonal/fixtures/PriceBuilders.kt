@@ -1,14 +1,14 @@
 package com.scosta.priceretrieverhexagonal.fixtures
 
-import com.scosta.priceretrieverhexagonal.application.domain.Amount
-import com.scosta.priceretrieverhexagonal.application.domain.BrandId
-import com.scosta.priceretrieverhexagonal.application.domain.Price
-import com.scosta.priceretrieverhexagonal.application.domain.Price.EndAt
-import com.scosta.priceretrieverhexagonal.application.domain.Price.Id
-import com.scosta.priceretrieverhexagonal.application.domain.Price.PriceList
-import com.scosta.priceretrieverhexagonal.application.domain.Price.Priority
-import com.scosta.priceretrieverhexagonal.application.domain.Price.StartAt
-import com.scosta.priceretrieverhexagonal.application.domain.ProductId
+import com.scosta.priceretrieverhexagonal.application.domain.model.Amount
+import com.scosta.priceretrieverhexagonal.application.domain.model.BrandId
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price.EndAt
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price.Id
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price.PriceList
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price.Priority
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price.StartAt
+import com.scosta.priceretrieverhexagonal.application.domain.model.ProductId
 import com.scosta.priceretrieverhexagonal.application.port.input.GetPriceInput
 import java.math.BigDecimal
 import java.math.BigDecimal.ONE

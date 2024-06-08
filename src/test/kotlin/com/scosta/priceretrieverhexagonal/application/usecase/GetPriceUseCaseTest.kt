@@ -1,6 +1,6 @@
 package com.scosta.priceretrieverhexagonal.application.usecase
 
-import com.scosta.priceretrieverhexagonal.application.domain.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
 import com.scosta.priceretrieverhexagonal.application.port.output.PriceRepository
 import com.scosta.priceretrieverhexagonal.fixtures.DEFAULT_APPLIED_AT
 import com.scosta.priceretrieverhexagonal.fixtures.buildGetPriceInput

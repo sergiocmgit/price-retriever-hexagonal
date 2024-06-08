@@ -1,6 +1,6 @@
 package com.scosta.priceretrieverhexagonal.infrastructure.adapter.input.http
 
-import com.scosta.priceretrieverhexagonal.application.domain.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
 import com.scosta.priceretrieverhexagonal.application.port.input.GetPrice
 import com.scosta.priceretrieverhexagonal.application.port.input.GetPriceInput
 import java.math.BigDecimal

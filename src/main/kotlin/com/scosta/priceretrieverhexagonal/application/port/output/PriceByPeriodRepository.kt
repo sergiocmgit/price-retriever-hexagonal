@@ -1,8 +1,8 @@
 package com.scosta.priceretrieverhexagonal.application.port.output
 
-import com.scosta.priceretrieverhexagonal.application.domain.BrandId
-import com.scosta.priceretrieverhexagonal.application.domain.Price
-import com.scosta.priceretrieverhexagonal.application.domain.ProductId
+import com.scosta.priceretrieverhexagonal.application.domain.model.BrandId
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.ProductId
 import java.time.OffsetDateTime
 
 interface PriceRepository {

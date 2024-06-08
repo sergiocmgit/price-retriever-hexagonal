@@ -1,6 +1,6 @@
 package com.scosta.priceretrieverhexagonal.application.port.input
 
-import com.scosta.priceretrieverhexagonal.application.domain.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
 import java.time.OffsetDateTime
 
 interface GetPrice {

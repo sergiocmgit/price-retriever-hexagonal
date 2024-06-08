@@ -1,6 +1,6 @@
 package com.scosta.priceretrieverhexagonal.utils
 
-import com.scosta.priceretrieverhexagonal.application.domain.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
 import com.scosta.priceretrieverhexagonal.config.DatabaseInstance.jdbcTemplate
 
 object DatabaseUtils {

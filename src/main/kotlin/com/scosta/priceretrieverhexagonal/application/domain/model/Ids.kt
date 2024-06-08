@@ -1,4 +1,4 @@
-package com.scosta.priceretrieverhexagonal.application.domain
+package com.scosta.priceretrieverhexagonal.application.domain.model
 
 @JvmInline
 value class BrandId(val value: Long)

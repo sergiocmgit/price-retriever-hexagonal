@@ -1,8 +1,8 @@
 package com.scosta.priceretrieverhexagonal.application.usecase
 
-import com.scosta.priceretrieverhexagonal.application.domain.BrandId
-import com.scosta.priceretrieverhexagonal.application.domain.Price
-import com.scosta.priceretrieverhexagonal.application.domain.ProductId
+import com.scosta.priceretrieverhexagonal.application.domain.model.BrandId
+import com.scosta.priceretrieverhexagonal.application.domain.model.Price
+import com.scosta.priceretrieverhexagonal.application.domain.model.ProductId
 import com.scosta.priceretrieverhexagonal.application.port.input.GetPrice
 import com.scosta.priceretrieverhexagonal.application.port.input.GetPriceInput
 import com.scosta.priceretrieverhexagonal.application.port.output.PriceRepository

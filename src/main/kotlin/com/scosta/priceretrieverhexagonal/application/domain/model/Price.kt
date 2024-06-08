@@ -1,4 +1,4 @@
-package com.scosta.priceretrieverhexagonal.application.domain
+package com.scosta.priceretrieverhexagonal.application.domain.model
 
 import java.time.OffsetDateTime
 
